@@ -1,0 +1,312 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyPFbktE8QWsTz7oc48ZSgNr",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/EnriqueAssis/Enrique-Assis/blob/master/PyTorch%20workshop%20Ryerson1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gaxUiJNkcKJY",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 87
+        },
+        "outputId": "653adb7c-e175-442a-b599-b86b1841141e"
+      },
+      "source": [
+        "\n",
+        "import numpy as np\n",
+        "arr = [[6,8],[7,3]]\n",
+        "print (type(arr))\n",
+        "np.array(arr)\n",
+        "print (type(arr))\n",
+        "arr = np.array(arr)\n",
+        "print (type(arr))\n",
+        "\n",
+        "import torch\n",
+        "torch.Tensor(arr)\n",
+        "print(type(arr))"
+      ],
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "<class 'list'>\n",
+            "<class 'list'>\n",
+            "<class 'numpy.ndarray'>\n",
+            "<class 'numpy.ndarray'>\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dmdEQc_jcXiX",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 139
+        },
+        "outputId": "00229fd2-b03a-4361-bbbb-cf34112c8075"
+      },
+      "source": [
+        "np.ones((7,7))\n",
+        "torch.ones((7,7))"
+      ],
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.],\n",
+              "        [1., 1., 1., 1., 1., 1., 1.]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "uXz9ZUnEenrO",
+        "colab_type": "text"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YUL7wWtMeomu",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 139
+        },
+        "outputId": "7f934f83-8149-48d2-b2c9-223c4fca9801"
+      },
+      "source": [
+        "np.random.rand(7,7)\n",
+        "torch.rand(7,7)"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[0.0646, 0.4695, 0.3077, 0.6125, 0.0346, 0.5712, 0.7693],\n",
+              "        [0.1257, 0.8685, 0.5010, 0.3665, 0.7824, 0.3686, 0.8085],\n",
+              "        [0.0926, 0.0880, 0.0183, 0.0057, 0.1815, 0.5567, 0.9010],\n",
+              "        [0.2373, 0.7379, 0.2165, 0.5454, 0.5134, 0.6460, 0.3915],\n",
+              "        [0.0395, 0.6939, 0.1225, 0.8312, 0.2153, 0.2326, 0.6176],\n",
+              "        [0.8244, 0.6674, 0.6512, 0.3464, 0.9212, 0.1096, 0.5534],\n",
+              "        [0.0768, 0.6482, 0.7695, 0.3850, 0.0363, 0.1583, 0.3368]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VPSeKGfVfFKz",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 69
+        },
+        "outputId": "a48f5a82-a0f2-4efb-fc73-07ed1908d4e7"
+      },
+      "source": [
+        "#seeds\n",
+        "np.random.seed(42)\n",
+        "np.random.rand(3,3)"
+      ],
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0.37454012, 0.95071431, 0.73199394],\n",
+              "       [0.59865848, 0.15601864, 0.15599452],\n",
+              "       [0.05808361, 0.86617615, 0.60111501]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YaKV_xkkfR3e",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 69
+        },
+        "outputId": "ff22b2e5-4dd0-434a-91c1-a8f0e80dcf6a"
+      },
+      "source": [
+        "torch.manual_seed(7)\n",
+        "torch.rand(3,3)"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([[0.5349, 0.1988, 0.6592],\n",
+              "        [0.6569, 0.2328, 0.4251],\n",
+              "        [0.2071, 0.6297, 0.3653]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 11
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kfhpMw1xnpz7",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 52
+        },
+        "outputId": "840c87d8-62be-408d-e30c-2cd1cf56ec7a"
+      },
+      "source": [
+        "#GPU seed\n",
+        "if torch.cuda.is_available():\n",
+        "    torch.cuda.manual_seed_all(7)\n",
+        "\n",
+        "#convert from numpy\n",
+        "torch_tensor = torch.from_numpy(np.array([[6,8],[7,3]]))\n",
+        "print(torch_tensor)"
+      ],
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "tensor([[6, 8],\n",
+            "        [7, 3]])\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6_ge9vxoobEL",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "7445c27e-656d-4c68-c26e-8abe35595093"
+      },
+      "source": [
+        "a = torch.ones(3,3)\n",
+        "a.size()\n",
+        "a.view(9)\n"
+      ],
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "tensor([1., 1., 1., 1., 1., 1., 1., 1., 1.])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "WNhOygYaq-Mo",
+        "colab_type": "text"
+      },
+      "source": [
+        "***Not all machine learning uses deep learning***"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "PQZjOGNWsJgG",
+        "colab_type": "text"
+      },
+      "source": [
+        "***In CNN, the kernel are the weights***"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jUxi57wI1LPs",
+        "colab_type": "text"
+      },
+      "source": [
+        "***Simpler models generalize better***"
+      ]
+    }
+  ]
+}
